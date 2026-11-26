@@ -1,0 +1,23 @@
+{
+  "name": "Gestión de proyectos",
+  "description": "Esta web: un solo lugar para todos los proyectos en curso",
+  "status": "activo",
+  "createdAt": "2026-11-26T01:51:11.841Z",
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Crear el repo en GitHub y subir el MVP",
+      "status": "todo",
+      "createdBy": "claude",
+      "createdAt": "2026-11-26T01:51:11.991Z"
+    },
+    {
+      "id": "t2",
+      "title": "Cargar los proyectos en curso",
+      "status": "todo",
+      "createdBy": "claude",
+      "createdAt": "2026-11-26T01:51:12.008Z"
+    }
+  ],
+  "updatedAt": "2026-11-26T01:51:12.056Z"
+}
