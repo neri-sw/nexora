@@ -8,9 +8,11 @@ const api = async (method, url, body) => {
     body: body ? JSON.stringify(body) : undefined,
   });
   const data = await res.json();
+  if (res.status === 401 && data.login) throw new LoginRequired();
   if (!res.ok) throw new Error(data.error || 'Error');
   return data;
 };
+class LoginRequired extends Error {}
 
 const esc = (s = '') => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -46,8 +48,28 @@ async function render() {
     if (m) await renderProject(m[1]);
     else await renderList();
   } catch (e) {
+    if (e instanceof LoginRequired) return renderLogin();
     app.innerHTML = `<div class="card empty">${esc(e.message)} · <a href="/" data-link>Volver</a></div>`;
   }
+}
+
+function renderLogin(error = '') {
+  document.title = 'Entrar · Proyectos';
+  app.innerHTML = `
+    <h1>Entrar</h1>
+    <form class="inline card" id="login">
+      <input type="password" name="password" placeholder="Contraseña" required autofocus>
+      <button>Entrar</button>
+    </form>
+    ${error ? `<p class="muted">${esc(error)}</p>` : ''}
+  `;
+  document.getElementById('login').onsubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await api('POST', '/api/session', { password: new FormData(e.target).get('password') });
+      render();
+    } catch (err) { renderLogin(err.message); }
+  };
 }
 
 async function renderList() {

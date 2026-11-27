@@ -20,7 +20,7 @@ a.project:hover { border-color: var(--accent); }
 .project h3 { margin: 0 0 4px; font-size: 16px; }
 form.inline { display: flex; gap: 8px; flex-wrap: wrap; }
 input, textarea, select { font: inherit; color: inherit; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
-input[type=text] { flex: 1; min-width: 180px; }
+input[type=text], input[type=password] { flex: 1; min-width: 180px; }
 textarea { width: 100%; min-height: 260px; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
 button { font: inherit; border: 1px solid var(--accent); background: var(--accent); color: #fff; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
 button.ghost { background: transparent; color: var(--accent); }
