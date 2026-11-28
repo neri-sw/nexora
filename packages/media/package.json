@@ -3,7 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "exports": { ".": "./src/index.ts", "./client": "./src/client.ts" },
-  "scripts": { "typecheck": "tsc -p ." },
-  "dependencies": { "@nexora/api": "*", "@vercel/blob": "^2.9.0" }
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@nexora/api": "*",
+    "@vercel/blob": "^2.9.0",
+    "@nexora/auth": "*"
+  }
 }

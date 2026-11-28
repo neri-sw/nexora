@@ -1,5 +1,6 @@
 "use client";
 /** @nexora/media/client: achicar y subir fotos desde el panel (solo navegador). */
+import { panelApi } from "@nexora/auth/client";
 
 /** Achica la foto (lado mayor `max` px, JPEG) antes de subirla: las funciones tienen límite de body. */
 export async function shrink(file: File, max = 1400, quality = 0.84): Promise<Blob> {
@@ -23,9 +24,9 @@ export async function shrink(file: File, max = 1400, quality = 0.84): Promise<Bl
 }
 
 /** Sube una foto y devuelve la URL para guardar en el producto. Si la sesión venció, recarga (aparece el login). */
-export async function uploadImage(file: File, endpoint = "/api/upload"): Promise<string> {
+export async function uploadImage(file: File, endpoint?: string): Promise<string> {
   const b = await shrink(file);
-  const res = await fetch(endpoint, { method: "POST", credentials: "same-origin", headers: { "content-type": "image/jpeg" }, body: b });
+  const res = await fetch(endpoint ?? panelApi("/api/upload"), { method: "POST", credentials: "same-origin", headers: { "content-type": "image/jpeg" }, body: b });
   const out = (await res.json().catch(() => ({}))) as { url?: string; error?: string };
   if (res.status === 401) window.location.reload();
   if (!res.ok || !out.url) throw new Error(out.error || "No se pudo subir la imagen");

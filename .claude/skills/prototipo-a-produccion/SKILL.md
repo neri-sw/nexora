@@ -15,6 +15,7 @@ Antes de cada salida a producción.
 
 - [ ] Datos reales del cliente en Blob; el seed solo carga fuera de producción.
 - [ ] Panel con login (`ADMIN_PASSWORD`), cookie HttpOnly, límite de intentos.
+- [ ] Panel escondido: `ADMIN_PATH` cargada y `src/proxy.ts` de `@nexora/auth/proxy`. `/admin` tiene que dar el mismo 404 que una URL inventada.
 - [ ] `GET /api/state` sin pedidos, clientes ni datos personales.
 - [ ] Precios, stock y totales calculados por el servidor.
 - [ ] Sin escritura pública del estado completo; solo pedidos/turnos por sus endpoints.

@@ -11,6 +11,13 @@ Formato:
 - Por qué: …
 ```
 
+## 2026-11-28 · puerto-chill · Panel escondido
+
+- Qué pasó: Neri pidió que sea muy difícil encontrar el panel probando URLs.
+- Qué se cambió: `@nexora/auth` 0.2.0 (`gate`, `proxy`, `panelBase`, `panelApi`); `media` y `admin-sync` llaman la API privada bajo la ruta del panel; `apps/puerto-chill/src/proxy.ts`; `e2e/panel-oculto.cjs` (24 controles). Variable nueva `ADMIN_PATH`.
+- Por qué: con la ruta secreta, `/admin` y la API privada directa responden el mismo 404 que una URL inventada.
+- Para la próxima: un `rewrite` del proxy deja el encabezado `x-middleware-rewrite` y delata la ruta especial; para un 404 indistinguible hay que devolver una copia del 404 real (lo hace `@nexora/auth/proxy`). `config.matcher` de Next tiene que ser un literal en el `proxy.ts` de la app: no se puede reexportar.
+
 ## 2026-11-28 · puerto-chill · Paridad con el original
 
 - Qué pasó: Neri pidió asegurar que Puerto Chill funcione igual en nexora que en `neri-sw/tienda-chill`.

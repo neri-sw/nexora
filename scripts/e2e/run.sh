@@ -28,6 +28,8 @@ cp "$BACKUP"/dist/*.d.ts "$REAL/dist/"
 
 # 2. Build y servidor con variables de prueba (nunca las reales)
 export BLOB_READ_WRITE_TOKEN=mock ADMIN_PASSWORD=clave-e2e BLOB_MOCK_DIR="$DATA" E2E_URL="http://localhost:$PORT"
+# panel escondido como en producción (ver @nexora/auth gate); ADMIN_PATH= vacío para probar sin esconder
+export ADMIN_PATH="${ADMIN_PATH-panel-e2e-k3x9q2m7}"
 cd "$ROOT/apps/$APP"
 rm -rf .next
 npx next build > /dev/null

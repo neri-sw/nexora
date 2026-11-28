@@ -14,6 +14,7 @@ import {
   updateSettings,
   useStore,
 } from "@/lib/store";
+import { panelBase } from "@/lib/admin-client";
 import { categoryLabel, dateTime, installmentLine, money, paymentLabel, statusLabel, whatsappTo } from "@/lib/format";
 import type { ArtKind, CategoryId, Order, OrderStatus, PaymentMethod, Product } from "@/lib/types";
 import { Logo, ProductVisual } from "@/components/brand";
@@ -57,7 +58,7 @@ export function Admin() {
   const [toast, setToast] = useState<{ id: number; text: string } | null>(null);
 
   const go = (t: Tab) => {
-    router.replace(t === "resumen" ? "/admin" : `/admin?tab=${t}`, { scroll: false });
+    router.replace(t === "resumen" ? panelBase() : `${panelBase()}?tab=${t}`, { scroll: false });
     window.scrollTo({ top: 0 });
   };
 

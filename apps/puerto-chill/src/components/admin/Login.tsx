@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/brand";
 import { IconLock } from "@/components/icons";
-import { login } from "@/lib/admin-client";
+import { keepSession, login } from "@/lib/admin-client";
 
 /** Pantalla de ingreso al panel. Se muestra desde el servidor cuando no hay sesión. */
 export function Login() {
@@ -68,7 +68,7 @@ export function Login() {
 /** Renueva la cookie de sesión (1 año) cada vez que se abre el panel. */
 export function KeepSession() {
   useEffect(() => {
-    fetch("/api/session", { credentials: "same-origin", cache: "no-store" }).catch(() => {});
+    keepSession();
   }, []);
   return null;
 }

@@ -26,6 +26,7 @@ describe("admin-sync", () => {
     puts = 0;
     const mem = new Map<string, string>();
     vi.stubGlobal("window", { addEventListener() {}, location: { reload() {} } });
+    vi.stubGlobal("location", { pathname: "/admin" });
     vi.stubGlobal("localStorage", { getItem: (k: string) => mem.get(k) ?? null, setItem: (k: string, v: string) => mem.set(k, v) });
     vi.stubGlobal("fetch", fakeFetch());
   });
@@ -82,5 +83,17 @@ describe("admin-sync", () => {
     expect(JSON.parse(localStorage.getItem("t:s")!).items).toEqual(["local"]);
     st.setLocal((c) => ({ ...c, x: 2 }));
     expect(st.getLocal()).toEqual({ x: 2 });
+  });
+
+  it("la API del panel va bajo la ruta del panel que se ve en el navegador", async () => {
+    vi.stubGlobal("location", { pathname: "/panel-secreto-123456" });
+    server = { rev: 1, data: { version: 1, items: ["a"], orders: [] } };
+    const st = make();
+    st.primeStore({ scope: "admin", rev: 1, data: server.data } as never);
+    st.setState((s) => ({ ...s, items: [...s.items, "b"] }));
+    await vi.runAllTimersAsync();
+    const urls = (fetch as unknown as { mock: { calls: [string, RequestInit?][] } }).mock.calls.map((c) => c[0]);
+    expect(urls.some((u) => u === "/panel-secreto-123456/api/admin/state")).toBe(true);
+    expect(urls.some((u) => u.startsWith("/api/admin"))).toBe(false);
   });
 });

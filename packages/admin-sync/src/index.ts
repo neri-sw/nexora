@@ -10,6 +10,7 @@
  * - "local": sin servidor configurado (por ejemplo `next dev` sin Blob). Todo queda en localStorage.
  * El carrito (o cualquier dato "del visitante") siempre es de cada navegador.
  */
+import { panelApi } from "@nexora/auth/client";
 import { useSyncExternalStore } from "react";
 
 export type Scope = "public" | "admin";
@@ -25,7 +26,8 @@ export interface SyncedStoreOptions<S extends { version: number }, Snap, C> {
   emptyLocal: C;
   /** Completa lo que la vista pública no trae (por ejemplo `orders: []`). */
   normalize(d: Snap): S;
-  endpoints?: { publicState?: string; adminState?: string };
+  /** Por defecto `/api/state` y la API del panel bajo su ruta (ver `panelApi` de @nexora/auth/client). */
+  endpoints?: { publicState?: string; adminState?: string | (() => string) };
   /** Refresco automático (ms). Por defecto panel 45 s, sitio público 30 s. */
   refreshMs?: { admin?: number; public?: number };
 }
@@ -33,7 +35,8 @@ export interface SyncedStoreOptions<S extends { version: number }, Snap, C> {
 type Fn<S> = (s: S) => S;
 
 export function createSyncedStore<S extends { version: number }, Snap = S, C = Record<string, number>>(o: SyncedStoreOptions<S, Snap, C>) {
-  const urls = { publicState: "/api/state", adminState: "/api/admin/state", ...o.endpoints };
+  const urls = { publicState: "/api/state", adminState: (() => panelApi("/api/admin/state")) as string | (() => string), ...o.endpoints };
+  const adminUrl = () => (typeof urls.adminState === "function" ? urls.adminState() : urls.adminState);
   const listeners = new Set<() => void>();
 
   let state: S = o.seed;
@@ -174,7 +177,7 @@ export function createSyncedStore<S extends { version: number }, Snap = S, C = R
       for (let i = 0; i < 6 && pending.length; i++) {
         const batch = pending.slice();
         const next = replay(server.data ?? o.seed, batch);
-        const r = await api("PUT", urls.adminState, { baseRev: server.rev, data: next });
+        const r = await api("PUT", adminUrl(), { baseRev: server.rev, data: next });
         if (r.status === 200) {
           pending = pending.slice(batch.length);
           server = { rev: Number(r.body.rev), data: next };
@@ -213,7 +216,7 @@ export function createSyncedStore<S extends { version: number }, Snap = S, C = R
   async function pull(fresh = false) {
     if (mode !== "remote" || flushing || pending.length) return;
     try {
-      const url = scope === "admin" ? urls.adminState : `${urls.publicState}${fresh ? "?fresh=1" : ""}`;
+      const url = scope === "admin" ? adminUrl() : `${urls.publicState}${fresh ? "?fresh=1" : ""}`;
       const r = await api("GET", url);
       const rev = Number(r.body.rev);
       // la caché puede devolver una versión vieja: solo se toma si es más nueva

@@ -17,7 +17,7 @@ Hay `BRIEF.md` y todavía no existe `apps/<cliente>`.
 2. Completá `site.config.ts` y `content.schema.ts` desde el brief.
 3. Creá `clients/<cliente>.md`.
 4. Cargá el seed con los productos o datos del PDF (solo desarrollo y preview).
-5. Pedile a Neri que cree el proyecto de Vercel (carpeta raíz `apps/<cliente>`, Blob privado, `ADMIN_PASSWORD`). Ver `deploy-vercel`.
+5. Pedile a Neri que cree el proyecto de Vercel (carpeta raíz `apps/<cliente>`, Blob privado, `ADMIN_PASSWORD`, `ADMIN_PATH`). Ver `deploy-vercel`.
 
 ## Modelo
 

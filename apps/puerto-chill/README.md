@@ -12,7 +12,7 @@ Los datos viven en un JSON privado en Vercel Blob (`<entorno>/state.json`, uno p
 | `GET/PUT /api/admin/state` | panel | Datos completos. El PUT lleva `baseRev`; si otro guardó antes responde 409 y el panel reaplica sus cambios. |
 | `POST /api/orders` | cualquiera | Registra un pedido. El servidor valida, calcula precios, envío, descuento y cuotas con los datos guardados (`src/lib/pricing.ts`, el mismo cálculo que muestra el carrito) y descuenta stock. No se cobra nada: el dueño coordina el pago. |
 
-Variables en Vercel: `ADMIN_PASSWORD` y `BLOB_READ_WRITE_TOKEN`.
+Variables en Vercel: `ADMIN_PASSWORD`, `ADMIN_PATH` (ruta secreta del panel) y `BLOB_READ_WRITE_TOKEN`. Sin `ADMIN_PATH` el panel queda en `/admin`.
 
 ## Cómo correrlo
 
@@ -32,7 +32,7 @@ Abrí http://localhost:3000.
 |---|---|
 | `/` | Selector: entrar a **la tienda** o abrir **el panel**. |
 | `/tienda` | Vista pública: vidriera, catálogo con búsqueda, filtros y orden, carrito y checkout de prueba. |
-| `/admin` | Panel: resumen, productos, pedidos, envíos y pagos, textos del sitio. Acepta `?tab=productos|pedidos|ventas|contenido`. |
+| `/<ADMIN_PATH>` | Panel (en `/admin` si no hay `ADMIN_PATH`): resumen, productos, pedidos, envíos y pagos, textos del sitio. Acepta `?tab=productos|pedidos|ventas|contenido`. Con `ADMIN_PATH`, `/admin` y la API privada directa dan 404. |
 
 ## Criterios de aceptación (usados para avanzar)
 

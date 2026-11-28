@@ -5,12 +5,17 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./client": "./src/client.ts"
+    "./client": "./src/client.ts",
+    "./proxy": "./src/proxy.ts",
+    "./gate": "./src/gate.ts"
   },
   "scripts": {
     "typecheck": "tsc -p ."
   },
   "dependencies": {
     "@nexora/api": "*"
+  },
+  "peerDependencies": {
+    "next": ">=16"
   }
 }
