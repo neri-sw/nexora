@@ -1,0 +1,537 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-27T04:27:38+00:00",
+  "title": "Design System: Puerto Chill",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Shop Paper",
+        "canonical": "oklch(96.5% 0.010 82)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#282623",
+          "#474540",
+          "#696660",
+          "#8c8983",
+          "#b0ada9",
+          "#d3d1cc",
+          "#f0eeeb"
+        ]
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Fresh Paper",
+        "canonical": "oklch(98.2% 0.007 89)",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#272624",
+          "#464542",
+          "#676662",
+          "#8b8985",
+          "#afaeaa",
+          "#d2d1ce",
+          "#efeeec"
+        ]
+      },
+      "sand": {
+        "role": "neutral",
+        "displayName": "Sand Wall",
+        "canonical": "oklch(90.7% 0.022 81)",
+        "tonalRamp": [
+          "#0e0b06",
+          "#2a261f",
+          "#4a443a",
+          "#6c6559",
+          "#90887c",
+          "#b3ada2",
+          "#d6d0c7",
+          "#f2eee6"
+        ]
+      },
+      "sand-2": {
+        "role": "neutral",
+        "displayName": "Sand Shade",
+        "canonical": "oklch(86.5% 0.030 81)",
+        "tonalRamp": [
+          "#0e0b05",
+          "#2b261c",
+          "#4c4437",
+          "#6f6554",
+          "#928877",
+          "#b5ad9e",
+          "#d7d0c4",
+          "#f4eee4"
+        ]
+      },
+      "linen": {
+        "role": "neutral",
+        "displayName": "Linen",
+        "canonical": "oklch(93.6% 0.015 98)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#282721",
+          "#46453e",
+          "#68665d",
+          "#8b8980",
+          "#afaea6",
+          "#d2d1cb",
+          "#f0efe9"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(87.1% 0.024 80)",
+        "tonalRamp": [
+          "#0e0b06",
+          "#2b261e",
+          "#4b443a",
+          "#6d6557",
+          "#90887b",
+          "#b4ada1",
+          "#d6d0c6",
+          "#f3eee6"
+        ]
+      },
+      "kraft": {
+        "role": "tertiary",
+        "displayName": "Kraft Paper",
+        "canonical": "oklch(74.8% 0.070 73)",
+        "tonalRamp": [
+          "#140800",
+          "#34230b",
+          "#574021",
+          "#7d6039",
+          "#a1845e",
+          "#c3a98a",
+          "#e3cdb3",
+          "#fdecd6"
+        ]
+      },
+      "kraft-2": {
+        "role": "tertiary",
+        "displayName": "Kraft Shelf",
+        "canonical": "oklch(66.7% 0.081 71)",
+        "tonalRamp": [
+          "#150800",
+          "#362105",
+          "#5b3f1b",
+          "#825e32",
+          "#a58258",
+          "#c7a885",
+          "#e6ccaf",
+          "#ffebd2"
+        ]
+      },
+      "olive": {
+        "role": "primary",
+        "displayName": "Counter Olive",
+        "canonical": "oklch(48.0% 0.056 122)",
+        "tonalRamp": [
+          "#090d02",
+          "#232915",
+          "#41492e",
+          "#616b49",
+          "#848e6d",
+          "#a9b396",
+          "#cdd5bd",
+          "#ebf2de"
+        ]
+      },
+      "olive-2": {
+        "role": "primary",
+        "displayName": "Olive Shade",
+        "canonical": "oklch(42.0% 0.055 122)",
+        "tonalRamp": [
+          "#090d02",
+          "#232915",
+          "#41492e",
+          "#616b49",
+          "#848e6d",
+          "#a9b296",
+          "#cdd5bd",
+          "#ebf2de"
+        ]
+      },
+      "olive-soft": {
+        "role": "primary",
+        "displayName": "Olive Wash",
+        "canonical": "oklch(90.6% 0.024 115)",
+        "tonalRamp": [
+          "#0b0c06",
+          "#26271f",
+          "#45463b",
+          "#656859",
+          "#888b7c",
+          "#adafa3",
+          "#d0d2c7",
+          "#eeefe7"
+        ]
+      },
+      "petrol": {
+        "role": "secondary",
+        "displayName": "Shopfront Petrol",
+        "canonical": "oklch(35.8% 0.044 229)",
+        "tonalRamp": [
+          "#030d12",
+          "#172932",
+          "#314954",
+          "#4d6b79",
+          "#718e9d",
+          "#99b2bf",
+          "#c0d5df",
+          "#e0f2fa"
+        ]
+      },
+      "petrol-2": {
+        "role": "secondary",
+        "displayName": "Petrol Deep",
+        "canonical": "oklch(30.3% 0.038 231)",
+        "tonalRamp": [
+          "#040d12",
+          "#1a2930",
+          "#344852",
+          "#516a77",
+          "#758d9a",
+          "#9db2bd",
+          "#c3d4dd",
+          "#e3f1f9"
+        ]
+      },
+      "petrol-ink": {
+        "role": "secondary",
+        "displayName": "Harbor Mist",
+        "canonical": "oklch(87.9% 0.021 216)",
+        "tonalRamp": [
+          "#070c0e",
+          "#1f282b",
+          "#3b474b",
+          "#5a696d",
+          "#7d8c90",
+          "#a4b1b4",
+          "#c8d3d6",
+          "#e7f0f3"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Espresso Ink",
+        "canonical": "oklch(28.6% 0.013 62)",
+        "tonalRamp": [
+          "#0d0b09",
+          "#292622",
+          "#494440",
+          "#6b655f",
+          "#8e8882",
+          "#b2ada8",
+          "#d5d0cc",
+          "#f2eeea"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "oklch(45.5% 0.019 67)",
+        "tonalRamp": [
+          "#0e0a07",
+          "#2a2520",
+          "#4b443d",
+          "#6d645c",
+          "#90877f",
+          "#b4aca5",
+          "#d6d0c9",
+          "#f3ede8"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "oklch(55.5% 0.022 67)",
+        "tonalRamp": [
+          "#0e0a07",
+          "#2b251f",
+          "#4b433b",
+          "#6e645a",
+          "#91877d",
+          "#b5aca3",
+          "#d7d0c8",
+          "#f3ede7"
+        ]
+      },
+      "danger": {
+        "role": "error",
+        "displayName": "Brick",
+        "canonical": "oklch(50.3% 0.134 34)",
+        "tonalRamp": [
+          "#200000",
+          "#481105",
+          "#732a1b",
+          "#a24632",
+          "#c76c57",
+          "#e69784",
+          "#ffbeae",
+          "#ffe0d2"
+        ]
+      },
+      "danger-soft": {
+        "role": "error",
+        "displayName": "Brick Wash",
+        "canonical": "oklch(91.8% 0.025 43)",
+        "tonalRamp": [
+          "#100a07",
+          "#2d2420",
+          "#4f423d",
+          "#72625c",
+          "#95857f",
+          "#b9aaa5",
+          "#dacec9",
+          "#f6ece8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Storefront hero headline; closing band and selector use slightly smaller clamps."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings; admin page titles at a fixed 2.25rem."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Product names, drawer headings, legends, featured totals and admin stats."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All copy, ss01 on; secondary copy at 0.875rem Ink Soft."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, nav, filter chips."
+      },
+      "tag": {
+        "displayName": "Tag",
+        "purpose": "Kraft tag text and count pills, tabular."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shelf",
+        "value": "0 6px 10px -4px rgba(47,41,36,0.45)",
+        "purpose": "Kraft shelf boards in the shop window."
+      },
+      {
+        "name": "hanging-tag",
+        "value": "0 10px 18px -10px rgba(47,41,36,0.6)",
+        "purpose": "Hanging address tag."
+      },
+      {
+        "name": "object-on-shelf",
+        "value": "0 14px 22px -16px rgba(47,41,36,0.6)",
+        "purpose": "Framed photo standing on a shelf."
+      },
+      {
+        "name": "window-glow",
+        "value": "0 30px 60px -40px rgba(34,65,79,0.8)",
+        "purpose": "Petrol-tinted base under the shop-window arch."
+      },
+      {
+        "name": "drawer-edge",
+        "value": "-20px 0 50px -30px rgba(47,41,36,0.6)",
+        "purpose": "Cart drawer leading edge."
+      },
+      {
+        "name": "switch-thumb",
+        "value": "0 1px 3px rgba(47,41,36,0.35)",
+        "purpose": "Switch thumb."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-quint",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Default easing: bump, rise, switch, card image scale, progress, tag flight."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Cart drawer slide-in (380ms)."
+      },
+      {
+        "name": "bump",
+        "value": "420ms scale 1 -> 1.18 -> 1",
+        "purpose": "Cart count after an add."
+      },
+      {
+        "name": "rise",
+        "value": "520ms translateY(14px) -> 0",
+        "purpose": "Hero copy entrance, staggered 90ms/160ms; mobile menu."
+      },
+      {
+        "name": "tag-flight",
+        "value": "720ms arc, rotate to -24deg, scale to 0.35",
+        "purpose": "Signature: kraft price tag flies from Add button to cart."
+      },
+      {
+        "name": "swing",
+        "value": "3.2s ease-in-out x2, -3deg to 2.5deg",
+        "purpose": "Hanging address tag sways twice on load."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "durations 1ms, single iteration",
+        "purpose": "Global prefers-reduced-motion override; tag flight skipped."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "container",
+        "value": "80rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Olive action button; every primary action in storefront and admin.",
+      "html": "<button class=\"ds-btn-primary\">Agregar al carrito</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--color-olive,#58633f);color:var(--color-paper,#f7f3ec);font:500 0.95rem/1.4 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);padding:12px 16px;border:0;border-radius:6px;cursor:pointer;transition:background-color 200ms} .ds-btn-primary:hover{background:var(--color-olive-2,#48522f)} .ds-btn-primary:active{transform:translateY(1px)} .ds-btn-primary:focus-visible{outline:2px solid var(--color-olive,#58633f);outline-offset:3px}"
+    },
+    {
+      "name": "Added Button State",
+      "kind": "button",
+      "refersTo": "button-primary-added",
+      "description": "Confirmed state of Add to cart for 1.5s.",
+      "html": "<button class=\"ds-btn-added\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12.5l4.5 4.5L19 7.5\"/></svg>Agregado</button>",
+      "css": ".ds-btn-added{display:inline-flex;align-items:center;gap:8px;background:var(--color-olive-soft,#dfe2d0);color:var(--color-olive-2,#48522f);font:500 0.95rem/1.4 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);padding:12px 16px;border:0;border-radius:6px} .ds-btn-added:focus-visible{outline:2px solid var(--color-olive,#58633f);outline-offset:3px}"
+    },
+    {
+      "name": "Quiet Button / Filter Chip",
+      "kind": "chip",
+      "refersTo": "button-quiet",
+      "description": "Sand quiet button; filter chips at rest, olive when active.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip ds-chip-on\">Todos <span>8</span></button><button class=\"ds-chip\">Bazar <span>4</span></button></div>",
+      "css": ".ds-chips{display:flex;gap:8px} .ds-chip{display:inline-flex;align-items:center;gap:8px;background:var(--color-sand,#e8dfd0);color:var(--color-ink,#2f2924);font:400 0.95rem/1.4 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);padding:10px 16px;border:0;border-radius:6px;cursor:pointer;transition:background-color 200ms} .ds-chip span{font-size:0.75rem;color:var(--color-ink-3,#685e54);font-variant-numeric:tabular-nums} .ds-chip:hover{background:var(--color-sand-2,#ddd1bd)} .ds-chip-on,.ds-chip-on:hover{background:var(--color-olive,#58633f);color:var(--color-paper,#f7f3ec)} .ds-chip-on span{color:rgba(247,243,236,0.75)} .ds-chip:focus-visible{outline:2px solid var(--color-olive,#58633f);outline-offset:3px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Fresh Paper field with hairline; olive border on focus, brick when invalid.",
+      "html": "<label class=\"ds-field\"><span>Costo de envío</span><span class=\"ds-field-box\"><em>$</em><input value=\"6500\"></span></label>",
+      "css": ".ds-field{display:block;font-family:var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);max-width:320px} .ds-field>span:first-child{display:block;margin-bottom:6px;font-size:0.875rem;font-weight:500;color:var(--color-ink,#2f2924)} .ds-field-box{display:flex;align-items:center;background:var(--color-paper-2,#fbf9f4);border:1px solid var(--color-line,#ddd3c3);border-radius:6px;transition:border-color 200ms} .ds-field-box:focus-within{border-color:var(--color-olive,#58633f)} .ds-field-box em{font-style:normal;padding-left:12px;color:var(--color-ink-3,#685e54)} .ds-field-box input{flex:1;min-width:0;background:transparent;border:0;padding:10px 12px;font:inherit;color:var(--color-ink,#2f2924);font-variant-numeric:tabular-nums;outline:none;caret-color:#58633f}"
+    },
+    {
+      "name": "Kraft Tag",
+      "kind": "chip",
+      "refersTo": "tag-kraft",
+      "description": "Signature badge: notched kraft label with punched hole and string.",
+      "html": "<span class=\"ds-tag\"><svg class=\"ds-tag-string\" viewBox=\"0 0 24 16\"><path d=\"M1 3c6 0 9 10 22 5\" fill=\"none\" stroke=\"#2f2924\" stroke-width=\"1\" opacity=\"0.55\"/></svg><span class=\"ds-tag-body\"><i></i>−12% off</span></span> <span class=\"ds-tag\"><svg class=\"ds-tag-string\" viewBox=\"0 0 24 16\"><path d=\"M1 3c6 0 9 10 22 5\" fill=\"none\" stroke=\"#2f2924\" stroke-width=\"1\" opacity=\"0.55\"/></svg><span class=\"ds-tag-body ds-tag-danger\"><i></i>Últimas 2</span></span>",
+      "css": ".ds-tag{position:relative;display:inline-flex;align-items:center;margin-left:24px} .ds-tag-string{position:absolute;left:-20px;top:50%;width:24px;height:16px;transform:translateY(-50%)} .ds-tag-body{position:relative;display:inline-flex;align-items:center;padding:4px 10px 4px 20px;background:var(--color-kraft,#c9a77c);color:var(--color-ink,#2f2924);font:600 0.72rem/1.4 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);letter-spacing:0.02em;font-variant-numeric:tabular-nums;clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 50%);border-radius:0 3px 3px 0} .ds-tag-body i{position:absolute;left:9px;top:50%;width:6px;height:6px;transform:translateY(-50%);border-radius:50%;background:var(--color-paper,#f7f3ec);box-shadow:0 0 0 1px rgba(47,41,36,0.3)} .ds-tag-danger{background:var(--color-danger,#a2412c);color:var(--color-paper,#f7f3ec)}"
+    },
+    {
+      "name": "Product Card",
+      "kind": "card",
+      "refersTo": "button-primary",
+      "description": "Boxless card: sand image well, serif name, tabular price, olive installments, full-width action.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-img\"><svg viewBox=\"0 0 200 200\" width=\"100%\" height=\"100%\"><circle cx=\"100\" cy=\"96\" r=\"64\" fill=\"#fbf9f4\" opacity=\".6\"/><path d=\"M60 150h80M70 110h60v40H70z\" fill=\"#c9a77c\" fill-opacity=\".5\" stroke=\"#2f2924\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M22 160h156\" stroke=\"#2f2924\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg></div><h3>Set matero de viaje</h3><p>Mate, bombilla y yerbera en un estuche.</p><div class=\"ds-price\">$18.500</div><div class=\"ds-cuotas\">3 cuotas sin interés de $6.167</div><button>Agregar al carrito</button></article>",
+      "css": ".ds-card{width:240px;font-family:var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);color:var(--color-ink,#2f2924)} .ds-card-img{aspect-ratio:4/5;background:var(--color-sand,#e8dfd0);border-radius:6px;overflow:hidden;transition:transform 700ms cubic-bezier(0.22,1,0.36,1)} .ds-card:hover .ds-card-img svg{transform:scale(1.035)} .ds-card-img svg{transition:transform 700ms cubic-bezier(0.22,1,0.36,1)} .ds-card h3{margin:16px 0 0;font:400 1.35rem/1.375 var(--font-serif, Gelasio, Georgia, serif)} .ds-card p{margin:6px 0 0;font-size:0.875rem;color:var(--color-ink-2,#5e554c)} .ds-price{margin-top:12px;font-weight:600;font-size:1.1rem;font-variant-numeric:tabular-nums} .ds-cuotas{font-size:0.8rem;color:var(--color-olive,#58633f);font-variant-numeric:tabular-nums} .ds-card button{margin-top:16px;width:100%;background:var(--color-olive,#58633f);color:var(--color-paper,#f7f3ec);font:500 0.95rem/1.4 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);padding:12px 16px;border:0;border-radius:6px;cursor:pointer} .ds-card button:hover{background:var(--color-olive-2,#48522f)} .ds-card button:focus-visible{outline:2px solid #58633f;outline-offset:3px}"
+    },
+    {
+      "name": "Admin Panel with Switch",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Restrained admin container: hairline panel, sans heading, switch rows.",
+      "html": "<section class=\"ds-panel\"><header><h2>Entrega</h2><p>Cómo le llega el pedido a quien compra.</p></header><label class=\"ds-row\"><span><b>Retiro en el local</b><small>Sin cargo.</small></span><input type=\"checkbox\" role=\"switch\" checked class=\"ds-switch\"></label></section>",
+      "css": ".ds-panel{max-width:420px;background:var(--color-paper-2,#fbf9f4);border:1px solid var(--color-line,#ddd3c3);border-radius:6px;font-family:var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);color:var(--color-ink,#2f2924)} .ds-panel header{padding:16px 20px;border-bottom:1px solid var(--color-line,#ddd3c3)} .ds-panel h2{margin:0;font-size:1.05rem;font-weight:600} .ds-panel header p{margin:2px 0 0;font-size:0.875rem;color:var(--color-ink-2,#5e554c)} .ds-row{display:flex;justify-content:space-between;gap:24px;padding:16px 20px;cursor:pointer} .ds-row b{display:block;font-weight:500} .ds-row small{display:block;font-size:0.875rem;color:var(--color-ink-2,#5e554c)} .ds-switch{appearance:none;position:relative;width:44px;height:24px;border-radius:9999px;background:var(--color-sand-2,#ddd1bd);cursor:pointer;transition:background-color 200ms;flex-shrink:0} .ds-switch::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--color-paper-2,#fbf9f4);box-shadow:0 1px 3px rgba(47,41,36,0.35);transition:transform 200ms cubic-bezier(0.22,1,0.36,1)} .ds-switch:checked{background:var(--color-olive,#58633f)} .ds-switch:checked::after{transform:translateX(20px)} .ds-switch:focus-visible{outline:2px solid #58633f;outline-offset:2px}"
+    },
+    {
+      "name": "Storefront Header",
+      "kind": "nav",
+      "refersTo": "button-primary",
+      "description": "Sticky Fresh Paper header: wordmark, nav, olive cart with count pill, under a petrol announcement bar.",
+      "html": "<div class=\"ds-announce\">Envíos a todo el país · Retiro en el local</div><header class=\"ds-head\"><span class=\"ds-mark\">Puerto Chill<small>Bazar · Marroquinería</small></span><nav><a>Inicio</a><a class=\"on\">Tienda</a><a>Bazar</a></nav><button class=\"ds-cart\">Mi carrito <span>2</span></button></header>",
+      "css": ".ds-announce{background:var(--color-petrol,#22414f);color:var(--color-paper,#f7f3ec);text-align:center;padding:10px 16px;font:400 0.8rem/1.4 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);letter-spacing:0.06em} .ds-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 32px;background:rgba(251,249,244,0.92);border-bottom:1px solid var(--color-line,#ddd3c3);font-family:var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif)} .ds-mark{display:flex;flex-direction:column;font:400 1.35rem/1 var(--font-serif, Gelasio, Georgia, serif);letter-spacing:-0.01em;color:var(--color-ink,#2f2924)} .ds-mark small{margin-top:4px;font:500 0.62rem/1 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);text-transform:uppercase;letter-spacing:0.22em;opacity:.7} .ds-head nav{display:flex;gap:4px} .ds-head nav a{padding:8px 12px;border-radius:6px;font-size:0.95rem;color:var(--color-ink-2,#5e554c);cursor:pointer;transition:background-color 200ms} .ds-head nav a:hover{background:var(--color-sand,#e8dfd0)} .ds-head nav a.on{color:var(--color-ink,#2f2924)} .ds-cart{display:inline-flex;align-items:center;gap:10px;background:var(--color-olive,#58633f);color:var(--color-paper,#f7f3ec);font:500 1rem/1.4 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif);padding:10px 16px;border:0;border-radius:6px;cursor:pointer} .ds-cart:hover{background:var(--color-olive-2,#48522f)} .ds-cart:focus-visible{outline:2px solid #58633f;outline-offset:3px} .ds-cart span{min-width:24px;padding:2px 6px;border-radius:9999px;background:var(--color-paper,#f7f3ec);color:var(--color-olive-2,#48522f);font-size:0.75rem;font-weight:600;font-variant-numeric:tabular-nums;text-align:center}"
+    },
+    {
+      "name": "Admin Sidebar Nav",
+      "kind": "nav",
+      "refersTo": "admin-nav-active",
+      "description": "Petrol sidebar; active item is a paper block with petrol text.",
+      "html": "<nav class=\"ds-side\"><a>Resumen</a><a>Productos</a><a class=\"on\">Envíos y pagos</a><a>Textos del sitio</a></nav>",
+      "css": ".ds-side{display:flex;flex-direction:column;gap:4px;width:240px;padding:12px;background:var(--color-petrol,#22414f);font:400 0.95rem/1.4 var(--font-sans, 'Hanken Grotesk', system-ui, sans-serif)} .ds-side a{padding:10px 12px;border-radius:6px;color:var(--color-petrol-ink,#c9dbe0);cursor:pointer;transition:background-color 200ms,color 200ms} .ds-side a:hover{background:rgba(247,243,236,0.1);color:var(--color-paper,#f7f3ec)} .ds-side a.on{background:var(--color-paper,#f7f3ec);color:var(--color-petrol,#22414f)} .ds-side a:focus-visible{outline:2px solid var(--color-sand,#e8dfd0);outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shop Window on Washington Street",
+    "overview": "Puerto Chill is a real neighborhood shop, and the system is built from the things on its counter: sand and cream walls, a petrol-blue shopfront frame, olive for the hand that takes your order, and kraft-paper price tags tied on with string. It continues the identity of the shop's source PDF (sand grounds, olive, petrol, a Georgia-metric serif) and extends it into a working storefront and a working back office.\n\nThe storefront persuades: a serif headline at shop-sign scale, an arched shop window with two shelves of hand-drawn objects, and a catalog laid out as a shelf. The admin operates: the same tokens, the same serif for page titles, but quiet panels, switches and fields, with petrol reserved for the sidebar. One token set serves both; the difference is density and restraint, never a second palette.\n\nSurfaces are flat and warm. Depth comes from tone (sand under paper, petrol bands across the page) and from a few soft, ink-tinted drop shadows on physical objects (shelves, tags, the hanging address tag), not from floating cards. The PDF's tracked uppercase eyebrows above headings were deliberately dropped: headings stand on their own.",
+    "keyCharacteristics": [
+      "Warm paper and sand grounds; petrol fills whole bands; olive is the only action color.",
+      "Gelasio serif for every heading and price-of-the-moment; Hanken Grotesk for all UI.",
+      "Kraft tags with a punched hole and string are the brand's badge and price gesture.",
+      "1px warm hairlines and 6px corners everywhere; nothing pill-shaped except counts and switches.",
+      "Hand-drawn single-stroke icons and product art (1.6px icon stroke, 2.2px art stroke, round caps).",
+      "Motion is ease-out-quint, short, and always yields to reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Hand Rule",
+        "body": "Olive is the only color that means \"do this\". Petrol never becomes a button fill; at most an outlined link sits on a petrol band.",
+        "section": "colors"
+      },
+      {
+        "name": "The Whole Band Rule",
+        "body": "Petrol is applied edge to edge (bars, bands, sidebars, summary blocks), never as a small accent or a text color on light grounds except the active admin nav label.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Money Rule",
+        "body": "Every price, count and quantity uses tabular figures (`.tnum`).",
+        "section": "typography"
+      },
+      {
+        "name": "The Headings Stand Alone Rule",
+        "body": "No tracked uppercase eyebrow or kicker above a heading. The only uppercase tracked text in the system is the \"Bazar · Marroquinería\" line inside the wordmark lockup, and the announcement bar's light +0.06em tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Cast Shadow Rule",
+        "body": "A shadow means \"this is an object in the shop\". Cards, panels, inputs and buttons stay flat with a hairline.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use Counter Olive (#58633f) for every primary action and nothing else.",
+      "**Do** lay petrol (#22414f) as whole bands and frames, edge to edge.",
+      "**Do** set headings, product names and featured totals in Gelasio 400 with negative tracking at display sizes.",
+      "**Do** use the kraft Tag for badges and price moments, and tabular figures for all money.",
+      "**Do** keep corners at 6px and borders at 1px Hairline (#ddd3c3).",
+      "**Do** draw icons and product art as single round-capped strokes in Espresso Ink (1.6px icons, 2.2px art).",
+      "**Do** animate with ease-out-quint (cubic-bezier(0.22, 1, 0.36, 1)) and keep every motion off under prefers-reduced-motion.",
+      "**Do** give the admin the same tokens as the storefront, quieter: panels, hairlines, switches, sans panel headings."
+    ],
+    "donts": [
+      "**Don't** put tracked uppercase eyebrows or kickers above headings; the PDF's eyebrows were dropped on purpose.",
+      "**Don't** use petrol as a button fill or kraft as a primary action.",
+      "**Don't** add drop shadows to cards, panels, inputs or buttons; shadows belong to shelves, tags and objects.",
+      "**Don't** introduce pill-shaped buttons or larger radii outside the shop-window arch.",
+      "**Don't** introduce a second accent color or a cool gray neutral; all neutrals are warm."
+    ]
+  }
+}
