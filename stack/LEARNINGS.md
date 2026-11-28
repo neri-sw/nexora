@@ -11,6 +11,14 @@ Formato:
 - Por qué: …
 ```
 
+## 2026-11-28 · puerto-chill · Paridad con el original
+
+- Qué pasó: Neri pidió asegurar que Puerto Chill funcione igual en nexora que en `neri-sw/tienda-chill`.
+- Qué se cambió: `scripts/paridad/` (levanta las dos versiones con el mismo Blob simulado) y `apps/puerto-chill/paridad/{api,ui}.cjs`. Resultado: 103 de 103 respuestas de la API iguales, las 22 pantallas idénticas en texto y captura (celu y compu), compra y panel iguales.
+- Única diferencia, buscada: `@nexora/commerce` corta con 413 los pedidos de más de 20 KB; el original los aceptaba recortando los campos.
+- Encontrado en las dos versiones (no es regresión, va al backlog): error de hidratación de React #418 en el panel (resumen y pedidos); `qty: "2"` (texto) se acepta como 2; `/api/upload` no revisa que los bytes sean de verdad la imagen declarada.
+- Para la próxima: al mover Titán, escribir su `paridad/` antes de tocar código y correrlo en cada paso.
+
 ## 2026-11-28 · puerto-chill · Fase 1: paquetes extraídos
 
 - Qué pasó: se extrajeron `api`, `auth`, `state`, `media`, `commerce` y `admin-sync` desde Puerto Chill y la app pasó a `apps/puerto-chill` usándolos, sin cambios visibles.
