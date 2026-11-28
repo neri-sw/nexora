@@ -1,4 +1,4 @@
-# Puerto Chill · Tienda online (demo)
+# Puerto Chill · Tienda online
 
 Esqueleto navegable de la tienda online de **Puerto Chill, bazar y marroquinería** (Washington 5502, Isidro Casanova), armado a partir del PDF `Puerto_Chill_Tienda_Online.pdf`.
 
@@ -30,7 +30,7 @@ Abrí http://localhost:3000.
 
 | Ruta | Qué es |
 |---|---|
-| `/` | Selector: entrar a **la tienda** o abrir **el panel**. |
+| `/` | La tienda (igual que `/tienda`). |
 | `/tienda` | Vista pública: vidriera, catálogo con búsqueda, filtros y orden, carrito y checkout de prueba. |
 | `/<ADMIN_PATH>` | Panel (en `/admin` si no hay `ADMIN_PATH`): resumen, productos, pedidos, envíos y pagos, textos del sitio. Acepta `?tab=productos|pedidos|ventas|contenido`. Con `ADMIN_PATH`, `/admin` y la API privada directa dan 404. |
 
