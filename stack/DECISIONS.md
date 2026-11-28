@@ -23,4 +23,14 @@ Una entrada por decisión: contexto, decisión, consecuencias. No se borran; si 
 - Heredado de Titán y Puerto Chill: `<VERCEL_ENV>/state.json` con `rev` y escritura condicional `ifMatch`.
 - Se revisa en Fase 5 detrás de una interfaz `StateStore`.
 
-## D4 · Stack único Next.js 16 (propuesta, pendiente de aprobación)
+## D4 · 2026-11-28 · Stack único Next.js 16 (aprobada por Neri)
+
+- Sitios nuevos: Next.js 16 + TypeScript + Tailwind 4 + Vercel Blob privado. Titán queda como legado hasta que se migre.
+
+## D5 · 2026-11-28 · Puerto Chill es la primera app (aprobada por Neri)
+
+- La Fase 1 extrae los paquetes desde Puerto Chill y lo muda a `apps/puerto-chill`. Su proyecto de Vercel en producción no cambia hasta el OK de Neri.
+
+## D6 · 2026-11-28 · Mercado Pago es el primer proveedor de pago (aprobada por Neri)
+
+- Fase 3: `packages/payments` con proveedor `manual` y luego `mercadopago`.
