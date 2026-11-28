@@ -19,6 +19,10 @@ Hay `BRIEF.md` y todavía no existe `apps/<cliente>`.
 4. Cargá el seed con los productos o datos del PDF (solo desarrollo y preview).
 5. Pedile a Neri que cree el proyecto de Vercel (carpeta raíz `apps/<cliente>`, Blob privado, `ADMIN_PASSWORD`). Ver `deploy-vercel`.
 
+## Modelo
+
+`apps/puerto-chill`: `src/site/server.ts` arma auth, estado, pedidos y fotos con opciones; cada `src/app/api/*/route.ts` es una línea; `src/lib/store.ts` usa `@nexora/admin-sync` y solo agrega las acciones del sitio. `next.config.ts` necesita `transpilePackages` con los paquetes `@nexora/*`.
+
 ## Paquetes
 
 Todos los activos en `site.config.ts`. Leé el README de cada uno antes de configurarlo.

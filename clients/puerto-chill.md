@@ -2,7 +2,7 @@
 
 Bazar y marroquinería, Washington 5502, Isidro Casanova.
 
-- App: legado en `neri-sw/tienda-chill` (Next.js 16, App Router). Se muda a `apps/puerto-chill` en la Fase 1.
+- App: `apps/puerto-chill` (Fase 1, sobre los paquetes `@nexora/*`). Producción todavía sale de `neri-sw/tienda-chill` hasta que Neri apunte el proyecto de Vercel a nexora.
 - Vercel: https://puerto-chill.vercel.app · Blob privado `puerto-chill-data`.
 - Módulos: state, auth (sesión de 1 año, 5 intentos/min, sin botón de cerrar sesión), api, commerce (stock simple, ids numéricos desde 1), media, admin-sync, admin-ui, legal-ar.
 - Estados de pedido: pendiente, preparando, listo, enviado, entregado, cancelado.

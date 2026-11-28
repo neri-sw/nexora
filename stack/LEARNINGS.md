@@ -11,6 +11,13 @@ Formato:
 - Por qué: …
 ```
 
+## 2026-11-28 · puerto-chill · Fase 1: paquetes extraídos
+
+- Qué pasó: se extrajeron `api`, `auth`, `state`, `media`, `commerce` y `admin-sync` desde Puerto Chill y la app pasó a `apps/puerto-chill` usándolos, sin cambios visibles.
+- Qué se cambió: 6 paquetes con 37 tests; la app quedó con `src/site/server.ts` (configuración) y rutas de una línea; `scripts/e2e/run.sh` con simulador de Blob en disco.
+- Por qué: que la próxima app arranque con todo esto resuelto.
+- Para la próxima: un `next-server` viejo en el puerto hace que el recorrido vea datos de otra corrida. `run.sh` ahora corta si el puerto está ocupado.
+
 ## 2026-11-28 · stack · Origen
 
 - Qué pasó: dos MVP (Titán Studios en HTML + JS, Puerto Chill en Next.js) resolvieron lo mismo dos veces: estado en Blob, sesión del panel, pedidos calculados por el servidor, fotos.

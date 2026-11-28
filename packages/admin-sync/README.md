@@ -2,14 +2,12 @@
 
 Store del panel: cambios en cola y reconciliación con el servidor.
 
-> Estado: **contrato en borrador** (Fase 0). El código se extrae en la Fase 1. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
+> Versión 0.1.0, extraída de Puerto Chill (Fase 1), con tests en `test/`. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
 
 ## Qué ofrece
 
-- Cada cambio es una función que queda en cola y se guarda con `PUT /api/admin/state` y `baseRev`.
-- Ante 409 trae los datos nuevos y re-aplica la cola encima.
-- Refresco automático cada 45 s sin pisar cambios sin guardar.
-- Modo local (`localStorage`) cuando no hay servidor.
+- `createSyncedStore({ seed, storeKey, localKey, emptyLocal, normalize, endpoints?, refreshMs? })` → `primeStore`, `startSync`, `useStore`, `useLocal`, `setState`, `setLocal`, `pull`, `getState`, `getLocal`, `getMode`, `api`.
+- Tipo `Initial<Snap>` para lo que la página trae del servidor.
 
 ## Qué garantiza
 

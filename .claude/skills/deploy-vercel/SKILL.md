@@ -13,7 +13,7 @@ App nueva, cambio de entorno o salida a producción.
 
 ## Pasos
 
-1. Proyecto de Vercel conectado a `neri-sw/nexora`, carpeta raíz `apps/<cliente>`.
+1. Proyecto de Vercel conectado a `neri-sw/nexora`, carpeta raíz `apps/<cliente>`, framework Next.js. Vercel instala desde la raíz del monorepo (workspaces) aunque la carpeta raíz sea la app.
 2. "Ignored Build Step": `npx turbo-ignore` para compilar solo si cambió la app o un paquete que usa.
 3. Blob privado conectado; variables `BLOB_READ_WRITE_TOKEN` y `ADMIN_PASSWORD` en producción y preview.
 4. Verificá en el deploy: `/api/state` sanitizado, `/api/admin/state` 401 sin sesión, login, pedido de prueba (y borrarlo).

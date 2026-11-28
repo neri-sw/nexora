@@ -2,16 +2,15 @@
 
 Catálogo, precios, pedidos, stock y estados.
 
-> Estado: **contrato en borrador** (Fase 0). El código se extrae en la Fase 1. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
+> Versión 0.1.0, extraída de Puerto Chill (Fase 1), con tests en `test/`. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
 
 ## Qué ofrece
 
-- `quote(lines, delivery, payment, installments, settings)`: módulo puro, lo usan el carrito y el servidor.
-- `parseRequest(body)` y `placeOrder(data, request, now)`: validan, calculan con datos guardados y descuentan stock.
-- Handler `POST /api/orders` → 201 `{ order }` · 400 `{ error, field? }` · 409 `{ error: "stock", items }` · 429.
-- `GET /api/orders/status?id=&phone=` → `{ id, status }`.
-- Variantes opcionales (talle, color) con stock por variante.
-- Transiciones de estado: cancelar devuelve stock; salir de cancelado lo descuenta.
+- Tipos: `CommerceProduct`, `CommerceState<P>`, `Order`, `OrderLine`, `Settings`, `DeliveryMethod`, `PaymentMethod`, `OrderStatus`.
+- Precios (puros, carrito y servidor): `quote`, `shippingFor`, `deliveryOptions`, `paymentOptions`, `canInstall`.
+- Pedidos: `parseRequest`, `placeOrder`, `setOrderStatus` (cancelar devuelve stock), `OrderError`, `OrderRequest`, `OrderReceipt`.
+- `@nexora/commerce/server`: `createOrderHandler({ state, limiter? })` → `POST /api/orders` (8 pedidos cada 10 min por IP por defecto).
+- Pendiente: variantes (talle, color) con stock por variante, para migrar Titán.
 
 ## Qué garantiza
 

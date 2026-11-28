@@ -2,14 +2,13 @@
 
 Sesión del panel de administración.
 
-> Estado: **contrato en borrador** (Fase 0). El código se extrae en la Fase 1. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
+> Versión 0.1.0, extraída de Puerto Chill (Fase 1), con tests en `test/`. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
 
 ## Qué ofrece
 
-- `checkPassword(pw)`, `isAdmin(request)`, `isAdminToken(value)` (Server Components), `sessionCookie(request, on)`.
-- Handler `POST/GET/DELETE /api/session`.
-- Límite de intentos fallidos por IP.
-- Config: nombre de cookie, duración, intentos por minuto.
+- `createAuth({ cookieName, scope, maxAgeSeconds, failMax?, failWindowMs?, passwordEnv?, failDelayMs? })` → `isConfigured`, `checkPassword`, `isAdminToken` (Server Components), `isAdmin` (route handlers), `sessionCookie`, `tooManyFailures`, `recordFailure`, `cookieName`.
+- `createSessionHandlers(auth)` → `GET`, `POST`, `DELETE` de `/api/session` (GET renueva la cookie: sesión deslizante).
+- `@nexora/auth/client`: `login(password)`.
 
 ## Qué garantiza
 

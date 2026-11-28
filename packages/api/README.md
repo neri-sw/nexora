@@ -2,14 +2,13 @@
 
 Utilidades comunes de los endpoints.
 
-> Estado: **contrato en borrador** (Fase 0). El código se extrae en la Fase 1. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
+> Versión 0.1.0, extraída de Puerto Chill (Fase 1), con tests en `test/`. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
 
 ## Qué ofrece
 
-- `json(body, status, headers)` con `no-store`.
-- `readJSONBody(request, maxBytes)`.
-- `rateLimited(key, max, windowMs)`, `clientIp(request)`.
-- Honeypot: campo `website`; si viene con texto se responde éxito falso y no se guarda.
+- `json(body, status?, headers?)`, `clientIp(request)`, `readJSONBody(request, maxBytes?)`.
+- `createRateLimiter({ max, windowMs })` → `hit`, `blocked`, `record`, `count`, `reset`.
+- `isBot(body)`: honeypot del campo `website`.
 
 ## Qué garantiza
 

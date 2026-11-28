@@ -2,16 +2,14 @@
 
 Estado del sitio en Vercel Blob privado: un JSON por entorno con revisión y escritura condicional.
 
-> Estado: **contrato en borrador** (Fase 0). El código se extrae en la Fase 1. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
+> Versión 0.1.0, extraída de Puerto Chill (Fase 1), con tests en `test/`. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
 
 ## Qué ofrece
 
-- `readState(fresh)` → `{ rev, data, etag }`. `fresh = true` lee sin caché.
-- `writeState(cur, data)` → nueva `rev`. Lanza `ConflictError` si otro escribió entre medio.
-- `mutateState(fn, tries = 3)`: lee fresco, aplica `fn`, guarda; ante conflicto relee y reintenta.
-- `publicView(data, privateKeys)`: quita las claves privadas declaradas en `site.config.ts`.
-- Handlers listos: `GET /api/state` (público, sanitizado), `GET/PUT /api/admin/state` (panel, con `baseRev` → 409 `{ rev, data }`).
-- Adaptador local (`localStorage`) para correr sin Blob en desarrollo.
+- `createBlobState<T>({ path? })` → `readState(fresh)`, `writeState(cur, data)`, `mutateState(fn, tries?)`. Path por defecto `<VERCEL_ENV>/state.json`.
+- `ConflictError`, `ENV`, `omitKeys(data, keys)`.
+- `createStateHandlers({ state, isAdmin, publicView, validate, maxBytes? })` → `publicGET`, `adminGET`, `adminPUT`.
+- `createInitialLoader({ state, publicView })` → `initialFor("public" | "admin")` (null sin `BLOB_READ_WRITE_TOKEN`: modo local).
 
 ## Qué garantiza
 

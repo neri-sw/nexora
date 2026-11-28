@@ -2,13 +2,13 @@
 
 Fotos subidas desde el panel.
 
-> Estado: **contrato en borrador** (Fase 0). El código se extrae en la Fase 1. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
+> Versión 0.1.0, extraída de Puerto Chill (Fase 1), con tests en `test/`. Este README es el contrato: si el código cambia, este archivo cambia en el mismo PR.
 
 ## Qué ofrece
 
-- Cliente: `shrink(file, maxPx, quality)` y `uploadImage(file)`.
-- `POST /api/upload` (panel; JPG, PNG, WebP; ≤ 4 MB) → 201 `{ url }`.
-- `GET /api/img?p=` sirve desde el Blob privado.
+- `createMediaHandlers({ isAdmin, maxBytes?, prefix? })` → `uploadPOST` (`/api/upload`), `imgGET` (`/api/img`).
+- `IMG_PREFIX`, `IMG_PATH`, `ENV`.
+- `@nexora/media/client`: `shrink(file, max?, quality?)`, `uploadImage(file)`.
 
 ## Qué garantiza
 

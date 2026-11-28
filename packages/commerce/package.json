@@ -1,0 +1,9 @@
+{
+  "name": "@nexora/commerce",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./server": "./src/server.ts" },
+  "scripts": { "typecheck": "tsc -p ." },
+  "dependencies": { "@nexora/api": "*", "@nexora/state": "*" }
+}
