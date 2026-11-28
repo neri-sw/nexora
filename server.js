@@ -1,50 +1,44 @@
-// Servidor local mínimo, sin dependencias. Uso: node server.js  ->  http://localhost:3000
-// Lee y escribe los proyectos como archivos dentro de data/projects/<slug>/
+// Servidor mínimo. Local: node server.js -> http://localhost:3000
+// En Vercel se usa como función (api/index.js) y guarda los datos en Vercel Blob (ver storage.js).
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const store = require('./storage');
 
 const PORT = process.env.PORT || 3000;
 const ROOT = __dirname;
-const DATA = path.join(ROOT, 'data', 'projects');
 const PUBLIC = path.join(ROOT, 'public');
-
-fs.mkdirSync(DATA, { recursive: true });
+const PASSWORD = process.env.APP_PASSWORD || ''; // sin contraseña = sin login (uso local)
 
 const now = () => new Date().toISOString();
 const slugify = (s) =>
-  s.toString().normalize('NFD').replace(/[̀-ͯ]/g, '')
+  s.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'proyecto';
 const validSlug = (s) => /^[a-z0-9-]+$/.test(s);
 
-function projectDir(slug) { return path.join(DATA, slug); }
-
-function readProject(slug) {
-  const dir = projectDir(slug);
-  const file = path.join(dir, 'project.json');
-  if (!validSlug(slug) || !fs.existsSync(file)) return null;
-  const project = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const visionFile = path.join(dir, 'vision.md');
-  project.vision = fs.existsSync(visionFile) ? fs.readFileSync(visionFile, 'utf8') : '';
+async function readProject(slug) {
+  if (!validSlug(slug)) return null;
+  const raw = await store.read(slug, 'project.json');
+  if (!raw) return null;
+  const project = JSON.parse(raw);
+  project.vision = (await store.read(slug, 'vision.md')) || '';
   project.slug = slug;
   project.tasks = project.tasks || [];
   return project;
 }
 
-function writeProject(slug, project) {
-  const dir = projectDir(slug);
-  fs.mkdirSync(dir, { recursive: true });
+async function writeProject(slug, project) {
   const { vision, slug: _s, ...meta } = project;
   meta.updatedAt = now();
-  fs.writeFileSync(path.join(dir, 'project.json'), JSON.stringify(meta, null, 2) + '\n');
-  if (vision !== undefined) fs.writeFileSync(path.join(dir, 'vision.md'), vision);
+  await store.write(slug, 'project.json', JSON.stringify(meta, null, 2) + '\n');
+  if (vision !== undefined) await store.write(slug, 'vision.md', vision);
   return readProject(slug);
 }
 
-function listProjects() {
-  return fs.readdirSync(DATA, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) => readProject(d.name))
+async function listProjects() {
+  const projects = await Promise.all((await store.listSlugs()).map(readProject));
+  return projects
     .filter(Boolean)
     .map(({ vision, tasks, ...p }) => ({
       ...p,
@@ -52,6 +46,24 @@ function listProjects() {
       openTasks: tasks.filter((t) => t.status !== 'done').length,
     }))
     .sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+}
+
+// --- Acceso con contraseña (solo si APP_PASSWORD está definida) ---
+const sessionToken = () => crypto.createHmac('sha256', PASSWORD).update('gestor-sesion-v1').digest('hex');
+const safeEqual = (a, b) => {
+  const x = Buffer.from(String(a)), y = Buffer.from(String(b));
+  return x.length === y.length && crypto.timingSafeEqual(x, y);
+};
+function isAuthed(req) {
+  if (!PASSWORD) return true;
+  const auth = req.headers.authorization || '';
+  if (auth.startsWith('Bearer ') && safeEqual(auth.slice(7), PASSWORD)) return true;
+  const m = (req.headers.cookie || '').match(/(?:^|;\s*)sesion=([a-f0-9]+)/);
+  return !!m && safeEqual(m[1], sessionToken());
+}
+function setSession(res, value, maxAge) {
+  const secure = process.env.VERCEL ? '; Secure' : '';
+  res.setHeader('Set-Cookie', `sesion=${value}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${maxAge}${secure}`);
 }
 
 function nextTaskId(project) {
@@ -65,6 +77,8 @@ function send(res, status, body) {
 }
 
 function readBody(req) {
+  // En Vercel el runtime ya parsea el body (req.body)
+  if (process.env.VERCEL && 'body' in req) return Promise.resolve(typeof req.body === 'object' && req.body ? req.body : {});
   return new Promise((resolve, reject) => {
     let data = '';
     req.on('data', (c) => { data += c; if (data.length > 1e6) req.destroy(); });
@@ -80,12 +94,12 @@ async function handleApi(req, res, parts) {
   const m = req.method;
 
   if (!slug) {
-    if (m === 'GET') return send(res, 200, listProjects());
+    if (m === 'GET') return send(res, 200, await listProjects());
     if (m === 'POST') {
       const body = await readBody(req);
       if (!body.name || !body.name.trim()) return send(res, 400, { error: 'Falta el nombre' });
       let s = slugify(body.name), i = 2;
-      while (fs.existsSync(projectDir(s))) s = slugify(body.name) + '-' + i++;
+      while (await store.read(s, 'project.json')) s = slugify(body.name) + '-' + i++;
       const project = {
         name: body.name.trim(),
         description: (body.description || '').trim(),
@@ -94,11 +108,11 @@ async function handleApi(req, res, parts) {
         tasks: [],
         vision: `# ${body.name.trim()}\n\n_Escribí acá la visión completa del proyecto._\n`,
       };
-      return send(res, 201, writeProject(s, project));
+      return send(res, 201, await writeProject(s, project));
     }
   }
 
-  const project = readProject(slug);
+  const project = await readProject(slug);
   if (!project) return send(res, 404, { error: 'Proyecto no encontrado' });
 
   if (!sub) {
@@ -106,7 +120,7 @@ async function handleApi(req, res, parts) {
     if (m === 'PATCH') {
       const body = await readBody(req);
       for (const k of ['name', 'description', 'status', 'vision']) if (body[k] !== undefined) project[k] = body[k];
-      return send(res, 200, writeProject(slug, project));
+      return send(res, 200, await writeProject(slug, project));
     }
   }
 
@@ -121,7 +135,7 @@ async function handleApi(req, res, parts) {
         createdBy: body.createdBy || 'neri',
         createdAt: now(),
       });
-      return send(res, 201, writeProject(slug, project));
+      return send(res, 201, await writeProject(slug, project));
     }
     const task = project.tasks.find((t) => t.id === taskId);
     if (!task) return send(res, 404, { error: 'Tarea no encontrada' });
@@ -130,21 +144,38 @@ async function handleApi(req, res, parts) {
       for (const k of ['title', 'status', 'notes']) if (body[k] !== undefined) task[k] = body[k];
       if (body.status === 'done' && !task.doneAt) task.doneAt = now();
       if (body.status && body.status !== 'done') delete task.doneAt;
-      return send(res, 200, writeProject(slug, project));
+      return send(res, 200, await writeProject(slug, project));
     }
     if (m === 'DELETE') {
       project.tasks = project.tasks.filter((t) => t.id !== taskId);
-      return send(res, 200, writeProject(slug, project));
+      return send(res, 200, await writeProject(slug, project));
     }
   }
   send(res, 405, { error: 'Método no permitido' });
 }
 
-http.createServer(async (req, res) => {
+async function handler(req, res) {
   try {
     const url = new URL(req.url, 'http://localhost');
-    const parts = url.pathname.split('/').filter(Boolean).map(decodeURIComponent);
-    if (parts[0] === 'api' && parts[1] === 'projects') return await handleApi(req, res, parts);
+    // En Vercel, vercel.json reescribe /api/* a /api/index?__path=*
+    const pathname = url.searchParams.has('__path') ? '/api/' + url.searchParams.get('__path') : url.pathname;
+    const parts = pathname.split('/').filter(Boolean).map(decodeURIComponent);
+
+    if (parts[0] === 'api') {
+      if (parts[1] === 'session') {
+        if (req.method === 'GET') return send(res, 200, { authed: isAuthed(req), passwordRequired: !!PASSWORD });
+        if (req.method === 'POST') {
+          const body = await readBody(req);
+          if (!PASSWORD || !safeEqual(body.password || '', PASSWORD)) return send(res, 401, { error: 'Contraseña incorrecta' });
+          setSession(res, sessionToken(), 60 * 60 * 24 * 30);
+          return send(res, 200, { authed: true });
+        }
+        if (req.method === 'DELETE') { setSession(res, '', 0); return send(res, 200, { authed: false }); }
+      }
+      if (!isAuthed(req)) return send(res, 401, { error: 'No autorizado', login: true });
+      if (parts[1] === 'projects') return await handleApi(req, res, parts);
+      return send(res, 404, { error: 'No encontrado' });
+    }
 
     // Archivos estáticos; cualquier otra ruta (/, /p/<slug>) devuelve index.html
     const file = path.join(PUBLIC, path.normalize(url.pathname));
@@ -157,4 +188,11 @@ http.createServer(async (req, res) => {
   } catch (e) {
     send(res, 500, { error: e.message });
   }
-}).listen(PORT, () => console.log(`Gestión de proyectos -> http://localhost:${PORT}`));
+}
+
+module.exports = handler;
+
+if (require.main === module) {
+  http.createServer(handler).listen(PORT, () =>
+    console.log(`Gestión de proyectos -> http://localhost:${PORT} (datos: ${store.mode}${PASSWORD ? ', con contraseña' : ''})`));
+}

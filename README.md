@@ -10,6 +10,10 @@ Abrir http://localhost:3000. Desde ahí se crea un proyecto; cada uno tiene su U
 
 Los datos quedan como archivos en `data/projects/`, versionados en el repo, así los puede leer y editar tanto la web como Claude Code. Ver `CLAUDE.md` para el formato.
 
+## Online
+
+Desplegada en Vercel: los datos van a Vercel Blob y el acceso pide la contraseña de `APP_PASSWORD`. Ver `CLAUDE.md`.
+
 ## Monorepo de sitios de clientes
 
 Este repo también contiene los sitios de clientes (`apps/`), la lógica de negocio compartida (`packages/`) y las skills que la usan (`.claude/skills/`). Ver [`stack/README.md`](stack/README.md) y [`PLAN.md`](PLAN.md).

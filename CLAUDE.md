@@ -8,7 +8,16 @@ Web local para gestionar todos los proyectos en curso de Neri. La usan Neri (des
 node server.js     # http://localhost:3000
 ```
 
-Sin dependencias. Node 18+.
+Sin dependencias para correrla local. Node 18+.
+
+## Versión online (Vercel)
+
+La app está desplegada en Vercel desde el repo `neri-sw/nexora`. Ahí:
+
+- Los datos viven en un store privado de **Vercel Blob** (no en `data/`), con la misma estructura: `projects/<slug>/project.json` y `projects/<slug>/vision.md`. `storage.js` elige Blob cuando existe `BLOB_READ_WRITE_TOKEN`; si no, usa los archivos locales.
+- La entrada es `api/index.js` (reusa `server.js`); `vercel.json` sirve `public/` como estático y reescribe `/api/*` a la función.
+- El acceso pide contraseña: variable `APP_PASSWORD` en Vercel. Sin esa variable (uso local) no hay login.
+- **La fuente de verdad es la versión online.** `data/` del repo queda como copia local/semilla. Para editar datos online desde Claude Code, usar la API con `Authorization: Bearer <APP_PASSWORD>` (por ejemplo `curl -H "Authorization: Bearer $APP_PASSWORD" https://<dominio>/api/projects`).
 
 ## Dónde viven los datos
 
@@ -49,8 +58,9 @@ Formato de `project.json`:
 - Mantener el JSON con 2 espacios de indentación.
 - Cada pedido nuevo de Neri se resuelve primero a mano desde Claude Code. Si se repite, evaluar convertirlo en una feature del front (`public/app.js`) y su endpoint en `server.js`.
 
-## API local (la usa el front)
+## API (la usa el front)
 
+- `GET/POST/DELETE /api/session` (estado del login, entrar con `{ password }`, salir)
 - `GET/POST /api/projects`
 - `GET/PATCH /api/projects/<slug>` (name, description, status, vision)
 - `POST /api/projects/<slug>/tasks` (title, createdBy)
