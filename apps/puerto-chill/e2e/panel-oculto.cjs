@@ -10,7 +10,8 @@ const P = "/" + SECRET;
 async function sig(path, init = {}) {
   const r = await fetch(B + path, { redirect: "manual", ...init });
   const body = await r.text();
-  const skip = /^(date|etag|x-nextjs-(stale-time|prerender|postponed)|vary|set-cookie|content-length|keep-alive|connection|transfer-encoding)$/;
+  // x-middleware-rewrite solo aparece con `next start` local: Vercel no lo manda (ver @nexora/auth/proxy)
+  const skip = /^(date|etag|x-nextjs-(stale-time|prerender|postponed)|vary|set-cookie|content-length|keep-alive|connection|transfer-encoding|x-middleware-rewrite)$/;
   const headers = [...r.headers.keys()].filter((h) => !skip.test(h)).sort();
   return { status: r.status, type: r.headers.get("content-type"), headers: headers.join(","), body: require("node:crypto").createHash("sha1").update(body).digest("hex") };
 }
