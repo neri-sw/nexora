@@ -1,0 +1,14 @@
+{
+  "name": "nexora",
+  "private": true,
+  "description": "Gestión de proyectos de Neri",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.9.0"
+  }
+}

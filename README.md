@@ -9,3 +9,7 @@ node server.js
 Abrir http://localhost:3000. Desde ahí se crea un proyecto; cada uno tiene su URL (`/p/<slug>`) con tareas y una visión completa en Markdown.
 
 Los datos quedan como archivos en `data/projects/`, versionados en el repo, así los puede leer y editar tanto la web como Claude Code. Ver `CLAUDE.md` para el formato.
+
+## Online
+
+Desplegada en Vercel: los datos van a Vercel Blob y el acceso pide la contraseña de `APP_PASSWORD`. Ver `CLAUDE.md`.
