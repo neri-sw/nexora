@@ -59,3 +59,29 @@ Formato de `project.json`:
 ## Próximos pasos posibles
 
 Colaboradores, costos e ingresos por proyecto.
+
+
+## Monorepo de sitios de clientes (`apps/`, `packages/`, `.claude/skills/`)
+
+Este repo también contiene los sitios de clientes y la lógica de negocio que comparten. Ver `stack/README.md` y `PLAN.md`.
+Este repo es un producto: varios sitios de clientes (`apps/`) que comparten la misma lógica de negocio (`packages/`). Tu trabajo no es solo terminar la tarea, sino dejar el stack mejor de lo que lo encontraste.
+
+### Al empezar cualquier sesión
+
+1. Usá la skill `stack-orquestador`. Ella decide qué otras skills usar.
+2. Leé `stack/BACKLOG.md` y decí si hay algo pendiente que toca lo que se va a hacer hoy.
+
+### Reglas
+
+- La lógica de negocio vive en `packages/`. Una app nunca reimplementa ni copia un paquete. Si una app necesita algo distinto, se agrega una opción o un gancho al paquete, con test.
+- Antes de escribir lógica, leé el `README.md` del paquete que corresponde: es el contrato (qué exporta, qué garantiza, cómo se configura). Si no existe el paquete, crealo o anotalo en `stack/BACKLOG.md`.
+- Un cambio en un paquete corre los tests de todos los paquetes y el build de todas las apps (`npm run check`).
+- Precios, stock y permisos se deciden en el servidor. El navegador solo muestra.
+- Textos para el usuario final en español rioplatense con voseo. Dinero en ARS. Fechas y horarios en `America/Argentina/Buenos_Aires`.
+- Next 16 cambia APIs: leé `node_modules/next/dist/docs/` antes de escribir route handlers.
+- Nada de producción sin OK explícito de Neri: merge a `main`, variables de entorno, borrar datos, dominios.
+- Nunca subir secretos. Las variables viven en Vercel.
+
+### Al cerrar cualquier sesión
+
+Usá la skill `mejorar-stack`. Siempre. Aunque la tarea haya sido chica.
