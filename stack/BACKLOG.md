@@ -5,7 +5,7 @@ Mejoras pendientes al producto (no a un cliente puntual). Cada ítem con origen.
 | Prioridad | Ítem | Paquete/skill | Origen |
 | --- | --- | --- | --- |
 | media | Mover la app de gestión a `apps/gestion` y cambiar su carpeta raíz en Vercel (hoy vive en la raíz; el `package.json` raíz ya combina las dos cosas y no tiene script `build` para que Vercel no compile los sitios en ese proyecto) | apps/gestion | decisión de Neri 2026-11-28 |
-| alta | Reconectar el Git del proyecto de Vercel `puerto-chill` a `neri-sw/nexora` (hoy sigue enlazado a `tienda-chill`; producción ya sale de nexora por deploy manual). Lo hace Neri en Settings → Git. Después, archivar `tienda-chill` | apps/puerto-chill | 2026-11-28 |
+| baja | Archivar `neri-sw/tienda-chill` (Puerto Chill ya deploya solo desde nexora: Git reconectado por Neri el 2026-11-28 y verificado con un push) | apps/puerto-chill | 2026-11-28 |
 | alta | `templates/app` a partir de `apps/puerto-chill` (sin marca ni contenido) | templates | Fase 1 |
 | media | Variantes (talle, color) con stock por variante en `commerce`, para migrar Titán | commerce | Titán |
 | media | `content.schema.ts` y pantalla "Textos del sitio" generada (`admin-ui`) | admin-ui | plan |
